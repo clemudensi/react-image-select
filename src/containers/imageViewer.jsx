@@ -28,6 +28,7 @@ class ImageViewer extends React.Component {
     }
   };
 
+  //last and previous image selected
   lastImageSelected = (element = this.state.image) =>{
     const imageArr = this.state.imageArr;
     imageArr.push(element);
