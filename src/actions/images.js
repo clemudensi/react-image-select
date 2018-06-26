@@ -10,13 +10,12 @@ export const fetchImageSuccess = image_view => {
 };
 
 export default function fetchImages() {
-  return(dispatch) => {
-    return axios.get(imageURL).then(images => {
-        dispatch(fetchImageSuccess(images.data))
-      }
-    ).catch(err=>{
-        return err
-      }
-    );
+  return async (dispatch) => {
+    try{
+      const images = await axios.get(imageURL);
+      dispatch(fetchImageSuccess(images.data))
+    } catch (err) {
+      return err
+    }
   }
 }

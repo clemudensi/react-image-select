@@ -18,10 +18,12 @@ class ImageViewer extends React.Component {
     }
   }
 
+  //fetch image data from redux action
   componentWillMount(){
     this.props.fetchImages();
   }
 
+  //updating props to state
   componentWillReceiveProps(nextProps) {
     if(nextProps.image_view !== this.props.image_view) {
       this.setState({image_view: nextProps.image_view});
@@ -42,9 +44,9 @@ class ImageViewer extends React.Component {
     if(objImg.prevImg === undefined || null){
       return <p>No Previous Image Yet</p>
     }else{
-      this.setState({prevImg: <img src={objImg.prevImg.src} alt="Previous"/>})
+      this.setState({prevImg: objImg.prevImg.src})
     }
-    this.setState({lastImg: <img src={objImg.lastImg.src} alt="Last"/>})
+    this.setState({lastImg: objImg.lastImg.src})
   };
 
   onShowLast =()=> {
@@ -66,13 +68,13 @@ class ImageViewer extends React.Component {
         <button onClick={this.onShowLast}>Last Image</button>
         <br/>
         <div>
-          {this.state.showLast ? null : <div>{this.state.lastImg}</div>}
+          {this.state.showLast ? null : <div><img src={this.state.lastImg} alt="Previous"/></div>}
         </div>
         <br/>
         <button onClick={this.onShowPrev}>Previous Image</button>
         <br/>
         <div>
-          {this.state.showPrev ? null : <div>{this.state.prevImg}</div>}
+          {this.state.showPrev ? null : <div><img src={this.state.prevImg} alt="Last"/></div>}
         </div>
       </div>
     )
