@@ -42,7 +42,7 @@ class ImageViewer extends React.Component {
     };
 
     if(objImg.prevImg === undefined || null){
-      return <p>No Previous Image Yet</p>
+      return null
     }else{
       this.setState({prevImg: objImg.prevImg.src})
     }
@@ -50,11 +50,11 @@ class ImageViewer extends React.Component {
   };
 
   onShowLast =()=> {
-    this.setState({showLast: false})
+    this.setState({showLast: !this.state.showLast})
   };
 
   onShowPrev =()=> {
-    this.setState({showPrev: false})
+    this.setState({showPrev: !this.state.showPrev})
   };
 
   render(){
